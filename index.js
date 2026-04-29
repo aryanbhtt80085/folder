@@ -1,9 +1,17 @@
-const app = require('./app');
+const express = require('express');
+const app = express();
 
-const PORT = process.env.PORT || 3000;
-
-const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.get('/', (req, res) => {
+  res.send('CI/CD pipeline is working!');
 });
 
-module.exports = server;
+// IMPORTANT: export app only
+module.exports = app;
+
+// start server ONLY if not in test mode
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
