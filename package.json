@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest",
+    "test": "jest --forceExit",
     "test:unit": "jest test/unit.test.js --runInBand --forceExit",
     "test:integration": "jest test/integration.test.js --runInBand --forceExit"
   },
