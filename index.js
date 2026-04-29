@@ -1,15 +1,9 @@
-const express = require('express');
-const app = express();
+const app = require('./app');
 
-const port = 3000;
+const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('CI/CD pipeline is working');
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
-// export app for unit tests
-const server = app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
-module.exports = { app, server };
+module.exports = server;
