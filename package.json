@@ -1,25 +1,18 @@
 {
   "name": "folder-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --forceExit --detectOpenHandles",
-    "test:unit": "jest test/unit.test.js --runInBand --forceExit --detectOpenHandles",
-    "test:integration": "jest test/integration.test.js --runInBand --forceExit --detectOpenHandles"
+    "start": "node app.js",
+    "test": "jest --forceExit",
+    "test:unit": "jest test/unit.test.js --runInBand --forceExit",
+    "test:integration": "jest test/integration.test.js --runInBand --forceExit"
   },
   "dependencies": {
     "express": "^4.18.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "supertest": "^6.3.3",
-    "axios": "^1.6.0"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "detectOpenHandles": true,
-    "forceExit": true,
-    "clearMocks": true
+    "supertest": "^6.3.3"
   }
 }
