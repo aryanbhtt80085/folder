@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --forceExit",
-    "test:unit": "jest test/unit.test.js --runInBand --forceExit",
-    "test:integration": "jest test/integration.test.js --runInBand --forceExit"
+  "start": "node index.js",
+  "test": "jest --runInBand --forceExit",
+  "test:unit": "jest test/unit.test.js --runInBand --forceExit",
+  "test:integration": "jest test/integration.test.js --runInBand --forceExit"
+}
   },
   "dependencies": {
     "express": "^4.18.2"

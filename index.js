@@ -5,10 +5,10 @@ app.get('/', (req, res) => {
   res.send('CI/CD pipeline is working!');
 });
 
-// IMPORTANT: export app only
+// export app for testing
 module.exports = app;
 
-// start server ONLY if not in test mode
+// start server only when run directly
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {

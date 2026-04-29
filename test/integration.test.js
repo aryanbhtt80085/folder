@@ -1,14 +1,18 @@
-const axios = require('axios');
-const { server } = require('../index');
+const request = require('supertest');
+const app = require('../index');
+
+let server;
+
+beforeAll(() => {
+  server = app.listen(0); // random free port
+});
 
 afterAll((done) => {
   server.close(done);
 });
 
-describe('Integration Test - Live Server', () => {
-  test('should respond from server3', async () => {
-    const res = await axios.get('http://3.89.162.126:3000/', { timeout: 10000 });
-    expect(res.status).toBe(200);
-    expect(res.data).toContain('CI/CD pipeline is working');
-  }, 15000);
+test('integration test - GET /', async () => {
+  const res = await request(server).get('/');
+  expect(res.statusCode).toBe(200);
+  expect(res.text).toBe('CI/CD pipeline is working!');
 });
