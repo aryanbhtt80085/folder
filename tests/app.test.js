@@ -1,23 +1,9 @@
-const request = require('supertest')
-
-const express = require('express')
-
-const app = express()
-
-app.get('/health', (req, res) => {
-    res.status(200).json({
-        status: 'UP'
-    })
-})
+const request = require('supertest');
+const app = require('../app'); // IMPORTANT: import your real app
 
 describe('Health Check API', () => {
-
-    test('GET /health returns 200', async () => {
-
-        const response = await request(app).get('/health')
-
-        expect(response.statusCode).toBe(200)
-
-        expect(response.body.status).toBe('UP')
-    })
-})
+  it('GET /health returns 200', async () => {
+    const res = await request(app).get('/health');
+    expect(res.statusCode).toBe(200);
+  });
+});

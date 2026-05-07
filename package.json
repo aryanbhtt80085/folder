@@ -1,7 +1,7 @@
 {
   "name": "folder-app",
   "version": "1.0.0",
-  "description": "Node.js app with CI/CD pipeline",
+  "description": "Node.js app with Jest and SonarQube",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -13,15 +13,11 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
-    "supertest": "^7.2.2"
+    "supertest": "^6.3.3"
   },
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "coverage",
-    "coverageReporters": [
-      "lcov",
-      "text"
-    ],
-    "testEnvironment": "node"
+    "coverageReporters": ["text", "lcov"]
   }
 }
