@@ -1,21 +1,39 @@
-const express = require('express')
+const express = require('express');
+const app = express();
 
-const app = express()
+// Middleware
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.status(200).send('Application Running')
-})
+// Environment variables (important for CI/CD)
+const PORT = process.env.PORT || 3000;
+const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
+// Health check (used in Jenkins integration test)
 app.get('/health', (req, res) => {
     res.status(200).json({
-        status: 'UP'
-    })
-})
+        status: 'UP',
+        message: 'Service is healthy',
+        timestamp: new Date().toISOString()
+    });
+});
 
-const PORT = 3000
+// Sample root route
+app.get('/', (req, res) => {
+    res.status(200).send('🚀 Folder App is running successfully');
+});
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`)
-})
+// Example API route (safe pattern for future scaling)
+app.get('/api/info', (req, res) => {
+    res.json({
+        app: 'folder-app',
+        version: '1.0.0',
+        baseUrl: BASE_URL,
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
 
-module.exports = app
+// Start server
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+    console.log(`🌍 Base URL: ${BASE_URL}`);
+});
