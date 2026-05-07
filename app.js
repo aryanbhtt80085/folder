@@ -1,14 +1,13 @@
 const express = require('express');
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+// Middleware (optional if needed)
+app.use(express.json());
 
-// Health route
+// Routes
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
 
-// ❗ IMPORTANT: bind to 0.0.0.0
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Export app ONLY (important for testing)
+module.exports = app;

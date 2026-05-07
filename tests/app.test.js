@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app'); // IMPORTANT: import your real app
+const app = require('../app');
 
 describe('Health Check API', () => {
   it('GET /health returns 200', async () => {
